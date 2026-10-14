@@ -12,7 +12,7 @@ import type {
 
 const API_BASE =
   (import.meta.env.VITE_API_URL as string | undefined) ||
-  "https://pairwise-ai-glri.vercel.app";
+  "https://pairwise-ai-1.onrender.com";
 
 export class ApiError extends Error {
   status: number;
