@@ -1,0 +1,13 @@
+[
+  "tests/test_api.py::test_analyze_endpoint",
+  "tests/test_api.py::test_dashboard",
+  "tests/test_api.py::test_date_auto_analysis",
+  "tests/test_api.py::test_date_flow_scripted",
+  "tests/test_api.py::test_delete_cascades",
+  "tests/test_api.py::test_health_and_llm_flag",
+  "tests/test_api.py::test_participant_url_validation",
+  "tests/test_api.py::test_rankings_directional",
+  "tests/test_api.py::test_recompute_rankings",
+  "tests/test_api.py::test_search_and_synthetic_filter",
+  "tests/test_api.py::test_seed_idempotent"
+]

@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+pairwise.db
+pairwise.db-*
+.pytest_cache/
