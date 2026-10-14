@@ -18,6 +18,11 @@ def db_path() -> str:
         if url.startswith("sqlite:///"):
             return url[len("sqlite:///"):]
         return url
+    # Vercel serverless: only /tmp is writable (ephemeral per instance).
+    # The app auto-seeds on startup when the DB is empty, so the demo
+    # is always populated even on cold starts.
+    if os.environ.get("VERCEL"):
+        return "/tmp/pairwise.db"
     return str(Path(__file__).resolve().parent.parent / "pairwise.db")
 
 

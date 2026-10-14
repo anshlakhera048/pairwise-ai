@@ -1,6 +1,7 @@
 """Pairwise AI backend — FastAPI app. Base path /api, all JSON."""
 from __future__ import annotations
 
+import os
 import re
 import uuid
 from datetime import datetime, timezone
@@ -20,6 +21,11 @@ INSTAGRAM_RE = re.compile(r"^https?://(www\.)?instagram\.com/[A-Za-z0-9_.]+/?$")
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     db.init_db()
+    # On ephemeral hosts (Vercel /tmp), the DB starts empty on cold starts.
+    # Auto-seed so the demo is always populated without manual steps.
+    # Scoped to Vercel so local dev and tests keep a clean DB.
+    if os.environ.get("VERCEL") and db.count_participants() == 0:
+        seed_mod.seed_all(force=True)
     yield
 
 
